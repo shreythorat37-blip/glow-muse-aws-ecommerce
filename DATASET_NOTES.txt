@@ -1,0 +1,7 @@
+Glow Muse bundled catalogue: 100,000 synthetic demonstration records generated for student project/testing. Not real retailer inventory. Stock, prices, size and colour variants are illustrative. Product images are externally hosted Unsplash stock references and subject to Unsplash terms. See README.md for limitations and an optional external dataset research path.
+
+IMAGE MATCHING UPDATE (2026-10-19)
+Product image URLs are now assigned using gender, category, and product-type rules. Men's polo shirts and T-shirts use dedicated tops pools; women's tops, bottoms, ethnic wear, activewear, footwear, accessories and outerwear use separate category pools. Since the 100,000 records are synthetic demo records, a curated stock-photo pool is reused and images are not unique verified SKUs. Remote images require an internet connection.
+
+
+Product-specific image matching update (2026-10-20): product titles containing Hoodie, Shirt, Jeans, Sneakers, Watch, or Clock are assigned a dedicated item-type image URL. Other products keep their gender/category-specific image assignment. Images are stock/demo imagery and are reused; they are not verified photos of a specific retail SKU or exact colour/print. An internet connection is required.

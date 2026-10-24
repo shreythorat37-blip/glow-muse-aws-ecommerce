@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Glow Muse | Fashion Collection</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:'Poppins',sans-serif;
+background:#fff8f7;
+color:#333;
+}
+
+nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:22px 8%;
+background:white;
+box-shadow:0 2px 15px rgba(0,0,0,0.05);
+}
+
+.logo{
+font-family:'Playfair Display',serif;
+font-size:34px;
+font-weight:700;
+color:#d48ca2;
+}
+
+nav ul{
+display:flex;
+gap:30px;
+list-style:none;
+}
+
+nav a{
+text-decoration:none;
+color:#444;
+font-weight:500;
+}
+
+.hero{
+padding:120px 20px;
+text-align:center;
+background:linear-gradient(to right,#fff1f4,#fde8ee);
+}
+
+.hero h1{
+font-size:64px;
+font-family:'Playfair Display',serif;
+margin-bottom:20px;
+}
+
+.hero p{
+font-size:18px;
+color:#666;
+}
+
+.products{
+padding:100px 8%;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:35px;
+}
+
+.card{
+background:white;
+border-radius:25px;
+overflow:hidden;
+box-shadow:0 5px 20px rgba(0,0,0,0.08);
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-10px);
+}
+
+.card img{
+width:100%;
+height:420px;
+object-fit:cover;
+}
+
+.card video{
+width:100%;
+display:block;
+border-radius:0;
+}
+
+.content{
+padding:25px;
+}
+
+.content h2{
+font-size:28px;
+margin-bottom:12px;
+}
+
+.content p{
+color:#777;
+line-height:1.8;
+margin-bottom:20px;
+}
+
+.shop-btn{
+display:inline-block;
+padding:12px 28px;
+background:#d48ca2;
+color:white;
+text-decoration:none;
+border-radius:30px;
+font-weight:600;
+}
+
+footer{
+text-align:center;
+padding:40px;
+background:white;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<nav>
+
+<div class="logo">
+Glow Muse
+</div>
+
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="fashion.html">Fashion</a></li>
+<li><a href="trends.html">Trends</a></li>
+</ul>
+
+</nav>
+
+<section class="hero">
+
+<h1>Fashion Collection</h1>
+
+<p>
+Discover style inspiration for women, from everyday essentials to statement looks.
+</p>
+
+</section>
+
+<section class="products">
+
+<div class="grid">
+
+<!-- PRODUCT 1 -->
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=900&q=85">
+
+<div class="content">
+
+<h2>Elegant Beige Outfit</h2>
+
+<p>
+Minimal Pinterest-inspired feminine fashion style.
+</p>
+
+<a href="https://amzn.to/4dteGTf" class="shop-btn" target="_blank">
+Shop Now
+</a>
+
+</div>
+
+</div>
+
+<!-- PRODUCT 2 -->
+
+<div class="card">
+
+<video autoplay muted loop playsinline controls>
+
+<source src="fashionvideo.mp4" type="video/mp4">
+
+</video>
+
+<div class="content">
+
+<h2>Luxury Dress Collection</h2>
+
+<p>
+Trending classy dresses perfect for modern aesthetics.
+</p>
+
+<a href="https://amzn.to/4filoOa" class="shop-btn" target="_blank">
+Shop Now
+</a>
+
+</div>
+
+</div>
+
+<!-- PRODUCT 3 -->
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=900&q=85">
+
+<div class="content">
+
+<h2>Minimal Street Style</h2>
+
+<p>
+Elegant and clean fashion inspiration loved on Pinterest.
+</p>
+
+<a href="https://amzn.to/4flUIfr" class="shop-btn" target="_blank">
+Shop Now
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<footer>
+
+<p>
+© 2026 Glow Muse • Women's Fashion
+</p>
+
+</footer>
+
+</body>
+</html>
