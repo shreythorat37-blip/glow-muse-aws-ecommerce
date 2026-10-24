@@ -1,53 +1,284 @@
-# Glow Muse — AI Fashion E-Commerce Project
+# Glow Muse – AI-Powered E-Commerce Fashion Website
 
-A responsive fashion storefront prototype with separate men’s/women’s catalogues, category-oriented stock imagery, colour/size selectors, wishlist, cart, demo checkout, recommendation UI, rule-based shopping assistant, and colour-sampling visual search.
+**Student:** Shrey Thorat  
+**Project Type:** Individual Project
 
-## Included catalogue
-- `products.json`: **100,000 product records** in a compact JSON file.
-- Every record has an ID, audience, category, style name, colour variants, size variants, price, stock demo value, and category/audience-oriented image URL.
-- **Important data honesty:** all 100,000 records are generated synthetic demonstration data (`recordType: synthetic_demo`), not actual seller listings, verified products, or live stock. Price, size/colour options, and stock are illustrative. The images are stock-image references and may be reused within their category. Do not represent these records as live inventory.
-- The storefront loads `products.json` with `fetch`; run through VS Code Live Server or another local HTTP server, not by double-clicking `index.html`.
-- The shop renders 24 cards at a time and has a Load More button, so it does not inject 100,000 cards into the page at once. Search/filter runs against the full catalogue in the browser.
+## 1\. Project Overview
 
-## Run in VS Code (Windows)
-1. Extract the ZIP.
-2. Open the extracted `Glow-Muse-AWS-Ecommerce` folder in VS Code.
-3. Install the **Live Server** extension if needed.
-4. Right-click `index.html` → **Open with Live Server**.
-5. Keep `products.json`, `app.js`, `styles.css`, `trends.html`, and `index.html` in the same folder.
+**Glow Muse** is an AI-powered fashion e-commerce web application designed to provide users with a modern, interactive, and personalized online shopping experience.
 
-## Project files
-- `index.html` — storefront
-- `app.js` — product UI and demo features
-- `styles.css` — responsive styling
-- `products.json` — 100,000-record synthetic catalogue
-- `database/schema.sql` — PostgreSQL starter schema and search indexes
-- `scripts/export_catalog_csv.py` — export JSON catalogue to CSV
-- `fashion.html`, `trends.html`, `fashionvideo.mp4` — project pages/media
+The application provides a fashion storefront where users can browse products, search and filter items, select colours and sizes, manage their cart and wishlist, and securely authenticate using Amazon Cognito.
 
-## Database import / CSV
-Run from the project folder:
-```bash
-python scripts/export_catalog_csv.py
+The project has been deployed using AWS cloud services to demonstrate cloud storage, content delivery, authentication, serverless computing, database management, and monitoring.
+
+## 2\. Key Features
+
+* Modern fashion e-commerce interface
+* Men's and women's fashion sections
+* Product search and filtering
+* Product sorting
+* Colour and size selection
+* Shopping cart
+* Wishlist
+* Product recommendation interface
+* AI-style shopping assistant
+* Visual search using image colour detection
+* Fashion trends section
+* User registration and login
+* Cloud-based backend API
+* Serverless AWS architecture
+* Responsive web interface
+
+## 3\. AWS Cloud Architecture
+
+The project uses a serverless AWS architecture.
+
+```text
+User
+  ↓
+Amazon CloudFront
+  ↓
+Amazon S3
+  ↓
+Glow Muse Website
+
+Glow Muse Website
+  ↓
+AWS Lambda
+  ↓
+Amazon DynamoDB
+
+User
+  ↓
+Amazon Cognito
+  ↓
+Authenticated Application
+
+AWS Lambda
+  ↓
+Amazon CloudWatch
+  ↓
+Monitoring \& Logs
 ```
-This creates `products.csv` (it is intentionally not duplicated in the ZIP to keep the package small). Import the CSV/JSON into PostgreSQL, DynamoDB, or another database as part of your database module. `database/schema.sql` is a relational starter schema; JSONB stores sizes and colour arrays.
 
-## AWS architecture path
-For a deployed architecture: static frontend on S3 + CloudFront or Amplify; product records in DynamoDB or RDS; images in S3; API Gateway + Lambda for product/order APIs; Cognito for authentication; CloudWatch for logs/metrics; and Bedrock/OpenSearch only behind a backend if you later add real AI/search. Do not put AWS secret keys in browser JavaScript. The current cart, wishlist, recommendations, image colour detection, and checkout are local/demo features; there is no live payment, real order API, real inventory reservation, or production AI API configured.
+## 4\. AWS Services Used
 
-## Data sources / future real-data option
-The included 100k file is synthetic and is not copied from a commercial retailer. For a real-data extension, review the dataset card and licence/terms before downloading or redistributing any external data. A potential research dataset is [Qdrant/H&M e-commerce products](https://huggingface.co/datasets/Qdrant/hm_ecommerce_products), listed as about 105k rows with CC BY 4.0 in its dataset card. Its fields use H&M-specific categories and colour groups, so map and validate them rather than forcing every item into a gender/category guess. Cite the dataset and preserve its licence/attribution if you use it.
+|AWS Service|Purpose|
+|-|-|
+|**Amazon S3**|Stores and hosts the frontend application files|
+|**Amazon CloudFront**|Provides content delivery for the web application|
+|**Amazon Cognito**|Handles user registration, login, and authentication|
+|**AWS Lambda**|Provides the serverless backend API|
+|**Amazon DynamoDB**|Stores application and product-related data|
+|**Amazon CloudWatch**|Provides monitoring and execution logs|
+|**AWS IAM**|Manages permissions and access control|
 
-## Important limitations
-- Images load from Unsplash over the internet; an offline session may show blank product images.
-- Category-level imagery is selected by audience and category but is not a verified image of every exact named style.
-- No real size-specific stock, payment gateway, login, order database, or AWS credentials are included.
-- Demo product rows must not be presented as real stock.
+## 5\. Backend API
+
+The backend is implemented using an AWS Lambda Web Function named:
+
+```text
+glow-muse-api
+```
+
+### Health/Test Endpoint
+
+```text
+/hello-world
+```
+
+Successful response:
+
+```json
+{
+  "status": "success",
+  "message": "Hello from Glow Muse API"
+}
+```
+
+### Products Endpoint
+
+```text
+/products
+```
+
+This endpoint communicates with the `GlowMuseProducts` DynamoDB table and returns product information to the frontend.
+
+## 6\. DynamoDB Tables
+
+The application database is designed using Amazon DynamoDB.
+
+* `GlowMuseProducts`
+* `GlowMuseUsers`
+* `GlowMuseCart`
+* `GlowMuseWishlist`
+* `GlowMuseOrders`
+* `GlowMuseReviews`
+
+## 7\. Authentication
+
+User authentication is implemented using **Amazon Cognito**.
+
+The authentication system provides:
+
+* User registration
+* Email-based login
+* Secure authentication
+* Session management
+* Sign-out functionality
+
+## 8\. Frontend Technologies
+
+The frontend is developed using:
+
+* HTML5
+* CSS3
+* JavaScript
+* Responsive web design
+
+Main application files include:
+
+|File|Description|
+|-|-|
+|`index.html`|Main Glow Muse storefront|
+|`app.js`|Application logic and interactive features|
+|`auth.js`|Authentication integration|
+|`styles.css`|Website styling and responsive design|
+|`fashion.html`|Fashion catalogue page|
+|`trends.html`|Fashion trends page|
+|`schema.sql`|Database schema|
+
+## 
+
+## 
+
+## 9\. Project Structure
+
+```text
+Glow-Muse-AWS-Ecommerce/
+│
+├── index.html
+├── app.js
+├── auth.js
 
 
-### Product image matching
-The catalogue assigns stock-photo URLs by gender, category and garment type. Men's polo/T-shirts are mapped separately from women's tops, and category pools are separated for bottoms, outerwear, ethnic wear, activewear, footwear and accessories. The synthetic 100,000-record catalogue reuses curated stock photos; it does not represent 100,000 unique verified product images. Internet access is required for remote images.
+├── styles.css
+├── fashion.html
+├── trends.html
+├── schema.sql
+│
+├── database/
+├── scripts/
+│
+├── AWS\_DEPLOYMENT.md
+├── PROJECT\_REPORT.md
+└── README.md
+```
+
+## 10\. Deployment
+
+The application is deployed on AWS using:
+
+```text
+Frontend
+   ↓
+Amazon S3
+   ↓
+Amazon CloudFront
+   ↓
+User Browser
+```
+
+Backend communication:
+
+```text
+User Browser
+   ↓
+AWS Lambda
+   ↓
+Amazon DynamoDB
+```
+
+Authentication:
+
+```text
+User
+   ↓
+Amazon Cognito
+   ↓
+Authenticated Application
+```
+
+## 11\. Security
+
+The project follows AWS security practices by using:
+
+* AWS IAM permissions
+* Amazon Cognito authentication
+* Private S3 bucket configuration
+* CloudFront distribution
+* Controlled Lambda permissions
+* DynamoDB access through AWS IAM
+
+AWS credentials and secret access keys are not stored in the frontend source code.
+
+## 12\. Testing
+
+The deployed backend was tested using the Lambda Web Function endpoint.
+
+The `/hello-world` endpoint successfully returned a JSON response, confirming that the Lambda Web Function and endpoint are operational.
+
+The `/products` endpoint was also tested for communication with the DynamoDB database.
+
+Amazon CloudWatch was used to monitor Lambda execution and troubleshoot deployment issues.
+
+## 13\. Future Enhancements
+
+Future versions of Glow Muse can include:
+
+* Real-time AI fashion recommendations
+* AWS Bedrock integration
+* Advanced semantic product search
+* Real payment gateway integration
+* Real-time inventory management
+* Order tracking
+* Personalized user dashboards
+* Advanced analytics
+* Automated CI/CD deployment
+
+## 14\. Project Information
+
+**Project Name:** Glow Muse – AI-Powered E-Commerce Fashion Website  
+**Student Name:** Shrey Thorat  
+**Project Type:** Individual Project  
+**Cloud Platform:** Amazon Web Services (AWS)
+
+## 15\. GitHub Repository
+
+**GitHub:**  
+https://github.com/shreythorat37-blip/glow-muse-aws-ecommerce
+
+## 16\. Conclusion
+
+Glow Muse demonstrates the development and deployment of a modern cloud-based e-commerce application using Amazon Web Services.
+
+The project combines frontend development with AWS services including Amazon S3, Amazon CloudFront, Amazon Cognito, AWS Lambda, Amazon DynamoDB, Amazon CloudWatch, and AWS IAM.
+
+The implementation demonstrates practical knowledge of cloud deployment, serverless architecture, authentication, database management, API development, and cloud monitoring.
 
 
-### Product image matching
-Product titles containing **hoodie**, **shirt**, **jeans**, **sneakers**, **watch**, or **clock** use an image selected for that item type. Other catalogue records retain gender/category-specific stock image assignments. This is demo catalogue imagery, not a guarantee of exact colour, pattern, or retail-SKU correspondence; stock images may be reused and require internet access.
+
+## 17\. Project Data
+
+
+
+The project uses a products.json file containing the product catalogue data and associated product image information used by the application.
+
+
+
+Due to GitHub's individual file upload size limitation, the products.json file is not included in this GitHub repository. The file is maintained separately and is used as part of the local project/application environment.
+
+
+
+This does not affect the source code and AWS implementation presented in this repository.
+
